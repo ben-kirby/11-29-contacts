@@ -1,0 +1,40 @@
+<div class="row">
+  <h2>Contact List</h2>
+  <% if @list.kind_of?(Array) %>
+    <% @list.each do |each| %>
+      <a href="/contact/<%= each.id %>"> <p><%= each.first_name + " " + each.last_name %></a></p>
+    <% end %>
+  <% else %>
+    <p><%= @list.contact_type + " - " + @list.first_name + " " + @list.last_name %>
+      <li>Address: <%= @list.address %></li>
+      <li>Job Title: <%= @list.job_title + ", " + @list.contact_company %></li>
+    </p>
+    <a href="/">Return Home</a>
+  <% end %>
+</div>
+
+<% if @list.kind_of?(Array) %>
+  <div class="row">
+    <form action="/" method="post">
+      <div class="form-group">
+        <input type="text" name="first_name" placeholder="First Name">
+      </div>
+      <div class="form-group">
+        <input type="text" name="last_name" placeholder="Last Name">
+      </div>
+      <div class="form-group">
+        <input type="text" name="address" placeholder="Address">
+      </div>
+      <div class="form-group">
+        <input type="text" name="job_title" placeholder="Job Title">
+      </div>
+      <div class="form-group">
+        <input type="text" name="contact_company" placeholder="Company">
+      </div>
+      <div class="form-group">
+        <input type="text" name="contact_type" placeholder="Contact Type">
+      </div>
+      <button type="submit" name="button">Add to Contacts</button>
+    </form>
+  </div>
+<% end %>
