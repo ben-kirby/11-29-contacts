@@ -5,7 +5,7 @@ require ('Contact')
 describe('Contact') do
   before do
     Contact.clear
-    attributes = {:first_name=> "ben", :last_name=>"kirby", :address=> "portland", :job_title=> "Professional Dummy", :company=> "Self Employed", :contact_type=> "contact"}
+    attributes = {:first_name=> "ben", :last_name=>"kirby", :address=> "portland", :job_title=> "Professional Dummy", :contact_company=> "Self Employed", :contact_type=> "contact"}
     @dummy = Contact.new(attributes)
     @dummy.save
     @dummy2 = Contact.new(attributes)
