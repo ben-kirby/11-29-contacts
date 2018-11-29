@@ -6,7 +6,12 @@
     <% end %>
   <% else %>
     <p><%= @list.contact_type + " - " + @list.first_name + " " + @list.last_name %>
-      <li>Address: <%= @list.address %></li>
+      <li>Address:<ul>
+        <% @list.address.each do |i| %>
+          <li><%= i %></li>
+        <% end %>
+      </ul></li>
+
       <li>Job Title: <%= @list.job_title + ", " + @list.contact_company %></li>
     </p>
     <a href="/">Return Home</a>
@@ -37,4 +42,21 @@
       <button type="submit" name="button">Add to Contacts</button>
     </form>
   </div>
+<% else %>
+<div class="row">
+  <form action="/contact/<%= @list.id %>" method="post">
+    <div class="form-group">
+      <input type="text" name="address" placeholder="Address">
+    </div>
+    <div class="form-group">
+      <input type="text" name="job_title" placeholder="Job Title">
+    </div>
+    <div class="form-group">
+      <input type="text" name="contact_company" placeholder="Company">
+    </div>
+    <div class="form-group">
+      <input type="text" name="contact_type" placeholder="Contact Type">
+    </div>
+    <button type="submit" name="button">Add to Contacts</button>
+  </form>
 <% end %>

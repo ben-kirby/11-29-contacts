@@ -23,3 +23,10 @@ get '/contact/:id' do
   @list = Contact.find(id)
   erb(:index)
 end
+
+post '/contact/:id' do
+  id = params['id']
+  @list = Contact.find(id)
+  @list.add_address(params)
+  erb(:index)
+end
